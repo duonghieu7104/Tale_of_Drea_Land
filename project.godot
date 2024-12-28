@@ -14,9 +14,13 @@ config/name="Tale_of_Drea_Land"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Singletons/globals.gd"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ez_dialogue/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg")
 
 [rendering]
 
