@@ -11,12 +11,21 @@ config_version=5
 [application]
 
 config/name="Tale_of_Drea_Land"
+run/main_scene="res://Scenes/MainScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://Singletons/globals.gd"
+
+[display]
+
+window/size/viewport_width=90
+window/size/viewport_height=160
+window/size/window_width_override=360
+window/size/window_height_override=640
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

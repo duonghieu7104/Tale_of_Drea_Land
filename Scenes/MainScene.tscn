@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj8q1a3q03bgf"]
+[gd_scene load_steps=3 format=3 uid="uid://dj8q1a3q03bgf"]
 
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_gw655"]
+[ext_resource type="Texture2D" uid="uid://csdw0j237d10p" path="res://icon.svg" id="2_iv1d4"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -10,3 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gw655")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(45, 32)
+scale = Vector2(0.226563, 0.21875)
+texture = ExtResource("2_iv1d4")

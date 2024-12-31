@@ -1,3 +1,3 @@
 extends Node
 
-@export current 
+@export var player = Player.new()

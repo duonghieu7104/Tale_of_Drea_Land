@@ -2,89 +2,55 @@ extends Resource
 
 class_name Player
 
-@export var hp : int
-@export var mana : int
-@export var atk_phys : int
-@export var atk_spec : int
-@export var spd : int
-@export var def_phys : int
-@export var def_spec : int
-
-@export var vitality: int  # Tăng tiến HP
-@export var wisdom: int  # Tăng tiến Mana
-@export var strength: int  # Tăng tiến ATK vật lý
-@export var intelligence: int  # Tăng tiến ATK phép thuật
-@export var agility: int  # Tăng tiến Tốc độ
-@export var endurance: int  # Tăng tiến DEF vật lý
-@export var resistance: int  # Tăng tiến DEF phép thuật
-
-@export var nature: String
-
-@export var GP : int # Đơn vị tiền GP (Gold Point)
+@export var class_player : String
+# 1. Guardian: Vật lí Def cao, phòng thủ phản đòn, chậm chạp.
+# 2. Assassin: Nhanh nhẹn nhất, sát thương vật lí dựa vào tốc độ để ra đòn nhanh.
+# 3. Mage: Máu ít, sát thương phép.
+# 4. Berserker: Chậm vừa, sát thương vật lí cực cao.
+# 5. Paladin: Kết hợp giữa phòng thủ và hồi máu, có khả năng bảo vệ đồng đội.
+# 6. Ranger: Sử dụng cung tên hoặc vũ khí tầm xa, nhanh nhẹn và linh hoạt.
+# 7. Warlock: Sử dụng phép thuật hắc ám, có khả năng triệu hồi và gây sát thương theo thời gian.
+# 8. Druid: Sử dụng phép thuật tự nhiên, có khả năng biến hình và hồi máu.
+# 9. Monk: Sử dụng võ thuật, nhanh nhẹn và có khả năng né tránh cao.
 
 @export var inventory = Inventory.new()
 
-func apply_nature_effects():
-	match nature:
-		"Lonely":
-			atk_phys += 10
-			def_phys -= 10
-		"Brave":
-			atk_phys += 10
-			spd -= 10
-		"Adamant":
-			atk_phys += 10
-			atk_spec -= 10
-		"Naughty":
-			atk_phys += 10
-			def_spec -= 10
-		"Bold":
-			def_phys += 10
-			atk_phys -= 10
-		"Relaxed":
-			def_phys += 10
-			spd -= 10
-		"Impish":
-			def_phys += 10
-			atk_spec -= 10
-		"Lax":
-			def_phys += 10
-			def_spec -= 10
-		"Timid":
-			spd += 10
-			atk_phys -= 10
-		"Hasty":
-			spd += 10
-			def_phys -= 10
-		"Jolly":
-			spd += 10
-			atk_spec -= 10
-		"Naive":
-			spd += 10
-			def_spec -= 10
-		"Modest":
-			atk_spec += 10
-			atk_phys -= 10
-		"Mild":
-			atk_spec += 10
-			def_phys -= 10
-		"Quiet":
-			atk_spec += 10
-			spd -= 10
-		"Rash":
-			atk_spec += 10
-			def_spec -= 10
-		"Calm":
-			def_spec += 10
-			atk_phys -= 10
-		"Gentle":
-			def_spec += 10
-			def_phys -= 10
-		"Sassy":
-			def_spec += 10
-			spd -= 10
-		"Careful":
-			def_spec += 10
-			atk_spec -= 10
-		_:
-			print("Unknown nature:", nature)
+@export var stats = PlayerStats.new()
+
+func add_oject_to_inventory(object):
+	if object is Items :
+		inventory.add_item(object)
+	elif object is Equipments :
+		inventory.add_equipmet(object)
+	elif object is Materials :
+		inventory.add_material(object)
+	elif object is Story_items :
+		inventory.add_story_item(object)
+	else :
+		inventory.add_other(object)
+
+func equip_equipment(equipment : Equipments):
+	inventory.equip_equipment(equipment)
+
+func unequip_equipment(equipment : Equipments):
+	inventory.unequip_equipment(equipment)
+
+func add_equipment_stats_to_player():
+	for equipment in inventory.equipped_items:
+		if equipment != null:
+			for stat in equipment.stats.keys():
+				match stat:
+					"hp":
+						stats.base_hp += equipment.stats[stat]
+					"mana":
+						stats.base_mana += equipment.stats[stat]
+					"atk_phys":
+						stats.base_atk_phys += equipment.stats[stat]
+					"atk_spec":
+						stats.base_atk_spec += equipment.stats[stat]
+					"spd":
+						stats.base_spd += equipment.stats[stat]
+					"def_phys":
+						stats.base_def_phys += equipment.stats[stat]
+					"def_spec":
+						stats.base_def_spec += equipment.stats[stat]
