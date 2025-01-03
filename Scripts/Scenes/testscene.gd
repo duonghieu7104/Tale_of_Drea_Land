@@ -22,7 +22,8 @@ func _on_load_pressed() -> void:
 
 func _on_generate_equipmet_pressed() -> void:
 	var equipment = Equipments.new()
-	equipment = equipment.generate_random_equipment("weapon", "Black", 40)
+	var equip_generate = EquipmentGenerator.new()
+	equipment = equip_generate.generate_random_equipment("weapon", "Black", 20)
 	Globals.player.add_oject_to_inventory(equipment)
 
 

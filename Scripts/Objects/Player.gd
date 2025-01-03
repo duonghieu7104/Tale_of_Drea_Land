@@ -13,7 +13,7 @@ func add_oject_to_inventory(object):
 		inventory.add_item(object)
 	elif object is Equipments :
 		inventory.add_equipmet(object)
-	elif object is Materials :
+	elif object is Gems :
 		inventory.add_material(object)
 	elif object is Story_items :
 		inventory.add_story_item(object)
