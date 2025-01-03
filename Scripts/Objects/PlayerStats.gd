@@ -1,49 +1,49 @@
 extends Resource
 
-class_name  PlayerStats
+class_name PlayerStats
 
-@export var level : int = 1
-@export var exp : int = 0
-@export var exp_to_next_level : int = 100
+@export var level: int = 1
+@export var exp: int = 0
+@export var exp_to_next_level: int = 100
 
 # _int
-@export var base_hp : int
-@export var base_mana : int
-@export var base_atk_phys : int
-@export var base_atk_spec : int
-@export var base_spd : int
-@export var base_def_phys : int
-@export var base_def_spec : int
+@export var base_hp: int
+@export var base_mana: int
+@export var base_atk_phys: int
+@export var base_atk_spec: int
+@export var base_spd: int
+@export var base_def_phys: int
+@export var base_def_spec: int
 
 # _int -> calculate_stats (_int) -> 
-@export var hp : int
-@export var mana : int
-@export var atk_phys : int
-@export var atk_spec : int
-@export var spd : int
-@export var def_phys : int
-@export var def_spec : int
+@export var hp: int
+@export var mana: int
+@export var atk_phys: int
+@export var atk_spec: int
+@export var spd: int
+@export var def_phys: int
+@export var def_spec: int
 
 # add stats from equipment
-@export var total_hp : int 
-@export var total_mana : int 
-@export var total_atk_phys : int 
-@export var total_atk_spec : int 
-@export var total_spd : int 
-@export var total_def_phys : int 
-@export var total_def_spec : int
+@export var total_hp: int
+@export var total_mana: int
+@export var total_atk_phys: int
+@export var total_atk_spec: int
+@export var total_spd: int
+@export var total_def_phys: int
+@export var total_def_spec: int
 
-@export var vitality: int  # Tăng tiến HP
-@export var wisdom: int  # Tăng tiến Mana
-@export var strength: int  # Tăng tiến ATK vật lý
-@export var intelligence: int  # Tăng tiến ATK phép thuật
-@export var agility: int  # Tăng tiến Tốc độ
-@export var endurance: int  # Tăng tiến DEF vật lý
-@export var resistance: int  # Tăng tiến DEF phép thuật
+@export var vitality: int # Tăng tiến HP
+@export var wisdom: int # Tăng tiến Mana
+@export var strength: int # Tăng tiến ATK vật lý
+@export var intelligence: int # Tăng tiến ATK phép thuật
+@export var agility: int # Tăng tiến Tốc độ
+@export var endurance: int # Tăng tiến DEF vật lý
+@export var resistance: int # Tăng tiến DEF phép thuật
 
 @export var nature: String
 
-@export var class_player : String
+@export var class_player: String
 # 1. Guardian: Vật lí Def cao, phòng thủ phản đòn, chậm chạp.
 # 2. Assassin: Nhanh nhẹn nhất, sát thương vật lí dựa vào tốc độ để ra đòn nhanh.
 # 3. Mage: Máu ít, sát thương phép.
@@ -141,8 +141,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.5,
 		"def_phys": 1.8,
 		"def_spec": 1.2,
-		"counter_rate": 1.5,  # Tỉ lệ phản đòn
-		"block_rate": 1.4     # Tỉ lệ chặn đòn
+		"counter_rate": 1.5, # Tỉ lệ phản đòn
+		"block_rate": 1.4 # Tỉ lệ chặn đòn
 	},
 	CharacterClass.ASSASSIN: {
 		"hp": 0.7,
@@ -152,8 +152,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 1.8,
 		"def_phys": 0.6,
 		"def_spec": 0.5,
-		"crit_rate": 1.5,     # Tỉ lệ chí mạng
-		"dodge_rate": 1.3     # Tỉ lệ né tránh
+		"crit_rate": 1.5, # Tỉ lệ chí mạng
+		"dodge_rate": 1.3 # Tỉ lệ né tránh
 	},
 	CharacterClass.MAGE: {
 		"hp": 0.6,
@@ -163,8 +163,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.7,
 		"def_phys": 0.4,
 		"def_spec": 1.1,
-		"magic_pen": 1.4,     # Xuyên giáp phép thuật
-		"mana_regen": 1.5     # Hồi mana
+		"magic_pen": 1.4, # Xuyên giáp phép thuật
+		"mana_regen": 1.5 # Hồi mana
 	},
 	CharacterClass.BERSERKER: {
 		"hp": 1.2,
@@ -174,8 +174,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.8,
 		"def_phys": 0.9,
 		"def_spec": 0.6,
-		"rage_bonus": 1.6,    # Tăng sát thương khi máu thấp
-		"lifesteal": 1.2      # Hút máu
+		"rage_bonus": 1.6, # Tăng sát thương khi máu thấp
+		"lifesteal": 1.2 # Hút máu
 	},
 	CharacterClass.PALADIN: {
 		"hp": 1.3,
@@ -185,8 +185,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.6,
 		"def_phys": 1.4,
 		"def_spec": 1.3,
-		"healing": 1.3,       # Khả năng hồi phục
-		"protect_rate": 1.4   # Khả năng bảo vệ đồng đội
+		"healing": 1.3, # Khả năng hồi phục
+		"protect_rate": 1.4 # Khả năng bảo vệ đồng đội
 	},
 	CharacterClass.RANGER: {
 		"hp": 0.8,
@@ -196,8 +196,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 1.4,
 		"def_phys": 0.7,
 		"def_spec": 0.7,
-		"range_bonus": 1.5,   # Tăng sát thương đánh xa
-		"accuracy": 1.4       # Độ chính xác
+		"range_bonus": 1.5, # Tăng sát thương đánh xa
+		"accuracy": 1.4 # Độ chính xác
 	},
 	CharacterClass.WARLOCK: {
 		"hp": 0.7,
@@ -207,8 +207,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.6,
 		"def_phys": 0.5,
 		"def_spec": 1.0,
-		"dot_power": 1.4,     # Sát thương theo thời gian
-		"summon_power": 1.5   # Sức mạnh quái vật triệu hồi
+		"dot_power": 1.4, # Sát thương theo thời gian
+		"summon_power": 1.5 # Sức mạnh quái vật triệu hồi
 	},
 	CharacterClass.DRUID: {
 		"hp": 1.0,
@@ -218,8 +218,8 @@ var CLASS_MULTIPLIERS = {
 		"spd": 0.9,
 		"def_phys": 1.0,
 		"def_spec": 1.0,
-		"healing": 1.4,       # Khả năng hồi phục
-		"form_bonus": 1.3     # Bonus khi biến hình
+		"healing": 1.4, # Khả năng hồi phục
+		"form_bonus": 1.3 # Bonus khi biến hình
 	},
 	CharacterClass.MONK: {
 		"hp": 1.0,
@@ -229,18 +229,18 @@ var CLASS_MULTIPLIERS = {
 		"spd": 1.5,
 		"def_phys": 1.0,
 		"def_spec": 0.9,
-		"dodge_rate": 1.5,    # Tỉ lệ né tránh
-		"counter_rate": 1.3   # Tỉ lệ phản đòn
+		"dodge_rate": 1.5, # Tỉ lệ né tránh
+		"counter_rate": 1.3 # Tỉ lệ phản đòn
 	}
 }
 
 # Growth curve types
 var GROWTH_CURVES = {
-	"linear": func(level: int) -> float: return 1.0 * level,
-	"early_boost": func(level: int) -> float: return 1.2 * sqrt(level),
-	"late_bloom": func(level: int) -> float: return 0.8 * pow(level, 1.2),
-	"mid_spike": func(level: int) -> float: return 1.0 * (1 + sin(PI * level / 40)),
-	"steady": func(level: int) -> float: return 0.9 * pow(level, 1.1)
+	"linear": func(_level: int) -> float: return 1.0 * _level,
+	"early_boost": func(_level: int) -> float: return 1.2 * sqrt(_level),
+	"late_bloom": func(_level: int) -> float: return 0.8 * pow(_level, 1.2),
+	"mid_spike": func(_level: int) -> float: return 1.0 * (1 + sin(PI * _level / 40)),
+	"steady": func(_level: int) -> float: return 0.9 * pow(_level, 1.1)
 }
 
 # Class-specific growth patterns
@@ -405,7 +405,7 @@ func init_base_stats_1st_by_class_player():
 			base_def_phys = 60
 			base_def_spec = 50
 
-func gain_exp(amount : int):
+func gain_exp(amount: int):
 	exp += amount
 	while exp >= exp_to_next_level:
 		exp -= exp_to_next_level

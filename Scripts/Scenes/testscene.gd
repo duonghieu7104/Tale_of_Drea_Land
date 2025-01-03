@@ -23,7 +23,10 @@ func _on_load_pressed() -> void:
 func _on_generate_equipmet_pressed() -> void:
 	var equipment = Equipments.new()
 	equipment.name = "Đồ long đao"
-	equipment.effects = {"IncreaseHpEffect" : 10}
+	equipment.type = "weapon"
+	equipment.rank = "Black"
+	equipment.level_requirement = 50
+	equipment.generate()
 	Globals.player.inventory.add_equipmet(equipment)
 
 
