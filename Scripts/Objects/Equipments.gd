@@ -9,8 +9,9 @@ class_name Equipments
 @export var level_requirement : int
 @export var description : String
 @export var weight : int
-@export var stats : Dictionary
-@export var bonus_stats : Dictionary
+@export var base_stats : Dictionary
+@export var bonus_stats_1 : Dictionary
+@export var bonus_stats_2 : Dictionary
 @export var effects : Dictionary
 
 @export var texture_path : String
@@ -24,126 +25,135 @@ func apply_equipment_effects(target):
 	effectable.effects = self.stats
 	effectable.apply_item_effects(target)
 
-const RANK_DATA = {
-	"Grey": {"multiplier": 0.6, "max_stats": 2, "bonus_chance": 0.1},
-	"Green": {"multiplier": 0.8, "max_stats": 2, "bonus_chance": 0.2},
-	"Blue": {"multiplier": 1.0, "max_stats": 3, "bonus_chance": 0.3},
-	"Orange": {"multiplier": 1.2, "max_stats": 3, "bonus_chance": 0.4},
-	"Red": {"multiplier": 1.4, "max_stats": 4, "bonus_chance": 0.5},
-	"Purple": {"multiplier": 1.6, "max_stats": 4, "bonus_chance": 0.6},
-	"Black": {"multiplier": 2.0, "max_stats": 5, "bonus_chance": 0.7}
+const ALL_STATS = ["hp", "mana", "atk_phys", "atk_spec", "spd", "def_phys", "def_spec"]
+const SPECIAL_STATS = ["counter_rate", "block_rate", "crit_rate", "dodge_rate"]
+const WEAPON_TYPES = ["physical", "magical", "defensive", "hybrid"]
+
+# Base stats values for level 10 (Blue rank)
+const BASE_VALUES = {
+	"hp": 15,
+	"mana": 10,
+	"atk_phys": 8,
+	"atk_spec": 8,
+	"spd": 5,
+	"def_phys": 6,
+	"def_spec": 6,
 }
 
-const BASE_STATS = {
-	"hp": {"base": 100, "min_bonus": 50, "max_bonus": 150},
-	"mana": {"base": 50, "min_bonus": 25, "max_bonus": 75},
-	"atk_phys": {"base": 30, "min_bonus": 15, "max_bonus": 45},
-	"atk_spec": {"base": 30, "min_bonus": 15, "max_bonus": 45},
-	"spd": {"base": 20, "min_bonus": 10, "max_bonus": 30},
-	"def_phys": {"base": 25, "min_bonus": 12, "max_bonus": 37},
-	"def_spec": {"base": 25, "min_bonus": 12, "max_bonus": 37},
-	"counter_rate": {"base": 5, "min_bonus": 2, "max_bonus": 8},
-	"block_rate": {"base": 5, "min_bonus": 2, "max_bonus": 8},
-	"crit_rate": {"base": 5, "min_bonus": 2, "max_bonus": 8},
-	"dodge_rate": {"base": 5, "min_bonus": 2, "max_bonus": 8}
+# Rank multipliers adjusted for better scaling
+const RANK_MULTIPLIERS = {
+	"Grey": 0.6,
+	"Green": 0.8,
+	"Blue": 1.0,
+	"Orange": 1.15,
+	"Red": 1.3,
+	"Purple": 1.5,
+	"Black": 1.8
 }
 
-const TYPE_AFFINITIES = {
-	"helmet": {
-		"primary": ["hp", "def_spec"],
-		"secondary": ["mana", "def_phys"],
-		"bonus_mult": 1.2
-	},
-	"armor1": {
-		"primary": ["def_phys", "hp"],
-		"secondary": ["block_rate", "counter_rate"],
-		"bonus_mult": 1.3
-	},
-	"armor2": {
-		"primary": ["def_spec", "mana"],
-		"secondary": ["dodge_rate", "hp"],
-		"bonus_mult": 1.3
-	},
-	"weapon": {
-		"primary": ["atk_phys", "atk_spec"],
-		"secondary": ["crit_rate", "spd"],
-		"bonus_mult": 1.4
-	},
-	"boots": {
-		"primary": ["spd", "dodge_rate"],
-		"secondary": ["def_phys", "def_spec"],
-		"bonus_mult": 1.2
-	},
-	"ring": {
-		"primary": ["crit_rate", "counter_rate"],
-		"secondary": ["atk_phys", "atk_spec"],
-		"bonus_mult": 1.1
-	},
-	"necklace": {
-		"primary": ["mana", "atk_spec"],
-		"secondary": ["hp", "def_spec"],
-		"bonus_mult": 1.1
-	},
-	"gloves": {
-		"primary": ["block_rate", "counter_rate"],
-		"secondary": ["atk_phys", "crit_rate"],
-		"bonus_mult": 1.1
-	}
-}
+func generate_random_equipment(type: String, rank: String, level_req: int) -> Equipments:
+	var equipment = Equipments.new()
+	equipment.type = type
+	equipment.rank = rank
+	equipment.level_requirement = level_req
+	equipment.star = 0
+	
+	# Level scaling (every 10 levels adds 25% to base)
+	var level_multiplier = 1.0 + ((level_req - 10) / 10.0) * 0.25
+	var rank_multiplier = RANK_MULTIPLIERS[rank]
+	
+	equipment.weight = {
+		"armor1": randi_range(80, 100),
+		"armor2": randi_range(80, 100),
+		"weapon": randi_range(60, 80),
+		"helmet": randi_range(40, 60),
+		"boots": randi_range(30, 40),
+		"gloves": randi_range(20, 30),
+		"ring": randi_range(10, 20),
+		"necklace": randi_range(10, 20)
+	}[type]
+	
+	equipment.base_stats = {}
+	equipment.bonus_stats_1 = {}
+	equipment.bonus_stats_2 = {}
+	
+	match type:
+		"helmet":
+			add_stat(equipment.base_stats, "hp", BASE_VALUES["hp"], level_multiplier, rank_multiplier)
+		"ring":
+			add_stat(equipment.base_stats, "mana", BASE_VALUES["mana"], level_multiplier, rank_multiplier)
+		"necklace":
+			if randf() > 0.5:
+				add_stat(equipment.base_stats, "atk_phys", BASE_VALUES["atk_phys"], level_multiplier, rank_multiplier)
+			else:
+				add_stat(equipment.base_stats, "atk_spec", BASE_VALUES["atk_spec"], level_multiplier, rank_multiplier)
+		"weapon":
+			var weapon_type = WEAPON_TYPES[randi() % WEAPON_TYPES.size()]
+			match weapon_type:
+				"physical":
+					add_stat(equipment.base_stats, "atk_phys", BASE_VALUES["atk_phys"] * 1.2, level_multiplier, rank_multiplier)
+				"magical":
+					add_stat(equipment.base_stats, "atk_spec", BASE_VALUES["atk_spec"] * 1.2, level_multiplier, rank_multiplier)
+				"defensive":
+					add_stat(equipment.base_stats, "def_phys", BASE_VALUES["def_phys"], level_multiplier, rank_multiplier)
+					add_stat(equipment.base_stats, "def_spec", BASE_VALUES["def_spec"], level_multiplier, rank_multiplier)
+				"hybrid":
+					add_stat(equipment.base_stats, "atk_spec", BASE_VALUES["atk_spec"], level_multiplier, rank_multiplier)
+		"gloves":
+			var random_stat = ALL_STATS[randi() % ALL_STATS.size()]
+			add_stat(equipment.base_stats, random_stat, BASE_VALUES[random_stat] * 0.8, level_multiplier, rank_multiplier)
+		"boots":
+			add_stat(equipment.base_stats, "spd", BASE_VALUES["spd"], level_multiplier, rank_multiplier)
+	
+	# Bonus stats với giá trị thấp hơn base
+	if rank in ["Orange", "Red", "Purple", "Black"]:
+		add_bonus_stats_1(equipment, type, level_multiplier, rank_multiplier)
+	
+	if rank in ["Purple", "Black"]:
+		add_bonus_stats_2(equipment, level_multiplier, rank_multiplier)
+	
+	equipment.name = generate_equipment_name(type, rank)
+	equipment.description = generate_equipment_description(equipment)
+	
+	return equipment
 
-var quality: float = randf_range(0.8, 1.2)
+func add_stat(stats_dict: Dictionary, stat_name: String, base_value: float, level_mult: float, rank_mult: float):
+	stats_dict[stat_name] = int(base_value * level_mult * rank_mult)
 
-func _add_bonus_effect():
-	var possible_effects = {
-		"elemental_bonus": randf_range(0.05, 0.15),
-		"status_resist": randf_range(0.1, 0.3),
-		"gold_find": randf_range(0.05, 0.2),
-		"exp_bonus": randf_range(0.05, 0.15)
-	}
-	var effect_type = possible_effects.keys()[randi() % possible_effects.size()]
-	self.effects["bonus_" + effect_type] = possible_effects[effect_type]
+func add_bonus_stats_1(equipment: Equipments, type: String, level_mult: float, rank_mult: float):
+	var num_bonus = 1 if rank_mult < 1.5 else 2
+	var bonus_multiplier = 0.4  # Bonus stats are 40% của base stats
+	
+	match type:
+		"helmet":
+			add_stat(equipment.bonus_stats_1, "def_phys", BASE_VALUES["def_phys"] * bonus_multiplier, level_mult, rank_mult)
+			if num_bonus > 1:
+				add_stat(equipment.bonus_stats_1, "def_spec", BASE_VALUES["def_spec"] * bonus_multiplier, level_mult, rank_mult)
+		"ring", "necklace", "boots", "gloves":
+			var available_stats = ALL_STATS.duplicate()
+			for _i in range(num_bonus):
+				if available_stats.is_empty(): break
+				var stat = available_stats.pop_at(randi() % available_stats.size())
+				add_stat(equipment.bonus_stats_1, stat, BASE_VALUES[stat] * bonus_multiplier, level_mult, rank_mult)
+		"weapon":
+			if "atk_spec" in equipment.base_stats:
+				if randf() > 0.5:
+					add_stat(equipment.bonus_stats_1, "spd", BASE_VALUES["spd"] * bonus_multiplier, level_mult, rank_mult)
+				else:
+					add_stat(equipment.bonus_stats_1, "mana", BASE_VALUES["mana"] * bonus_multiplier, level_mult, rank_mult)
 
-func generate() -> Dictionary:
-	var level_mult = 1.0 + (floor(level_requirement / 10.0) * 0.1)
-	self.stats = {}
+func add_bonus_stats_2(equipment: Equipments, level_mult: float, rank_mult: float):
+	var num_bonus = 1 if rank_mult < 1.8 else 2
+	var available_stats = SPECIAL_STATS.duplicate()
 	
-	if TYPE_AFFINITIES.has(self.type):
-		var type_data = TYPE_AFFINITIES[self.type]
-		var rank_data = RANK_DATA[self.rank]
-		
-		# Add primary stat
-		var primary_stat = type_data["primary"][randi() % type_data["primary"].size()]
-		self.stats[primary_stat] = _calculate_stat_value(primary_stat, level_mult, true)
-		
-		# Add secondary stats
-		var max_stats = rank_data["max_stats"] - 1
-		var additional_stats = randi() % max_stats + 1
-		
-		var available_stats = type_data["secondary"].duplicate()
-		for stat in self.stats.keys():
-			available_stats.erase(stat)
-			
-		for i in range(additional_stats):
-			if available_stats.size() == 0:
-				break
-			var idx = randi() % available_stats.size()
-			var stat = available_stats[idx]
-			self.stats[stat] = _calculate_stat_value(stat, level_mult, false)
-			available_stats.erase(available_stats[idx])
-	
-		if randf() < rank_data["bonus_chance"]:
-			_add_bonus_effect()
-	
-	return self.stats
+	for _i in range(num_bonus):
+		if available_stats.is_empty(): break
+		var stat = available_stats.pop_at(randi() % available_stats.size())
+		# Special stats có base là 2-3%
+		add_stat(equipment.bonus_stats_2, stat, 2, level_mult, rank_mult)
 
-func _calculate_stat_value(stat: String, level_mult: float, is_primary: bool) -> int:
-	var stat_data = BASE_STATS[stat]
-	var rank_data = RANK_DATA[self.rank]
-	var type_data = TYPE_AFFINITIES[self.type]
-	
-	var base = stat_data["base"]
-	var bonus = randf_range(stat_data["min_bonus"], stat_data["max_bonus"])
-	var rank_mult = rank_data["multiplier"]
-	var type_mult = type_data["bonus_mult"] if is_primary else 1.0
-	
-	return int((base + bonus) * rank_mult * level_mult * type_mult * quality)
+func generate_equipment_name(type: String, rank: String) -> String:
+	return rank + " " + type.capitalize()
+
+func generate_equipment_description(equipment: Equipments) -> String:
+	return "Level " + str(equipment.level_requirement) + " " + equipment.name
