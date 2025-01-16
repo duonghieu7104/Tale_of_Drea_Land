@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceeoj1vtejc3e"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Avatar.gd" id="1_th5vm"]
+[ext_resource type="Texture2D" uid="uid://dgrjva6ii6ee" path="res://Assets/Images/Avatar/Frame.png" id="2_au75c"]
+
+[node name="Avatar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -34.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_th5vm")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 56.0
+offset_bottom = 56.0
+expand_mode = 2
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -0.3
+offset_right = 55.7
+offset_bottom = 56.0
+texture = ExtResource("2_au75c")
+expand_mode = 2

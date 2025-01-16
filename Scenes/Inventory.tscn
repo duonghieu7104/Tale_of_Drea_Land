@@ -1,0 +1,363 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo0uk15g83ymq"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/Inventory.gd" id="1_3iu8k"]
+[ext_resource type="Texture2D" uid="uid://bersbas331jwt" path="res://Assets/Images/Icon/icon (5).jpg" id="2_bnogi"]
+[ext_resource type="Texture2D" uid="uid://dpel73jlj4ixv" path="res://Assets/Images/Icon/empty-icon.png" id="2_h68yi"]
+[ext_resource type="ButtonGroup" uid="uid://b8ubf7hodnrc8" path="res://Resource/TabBar.tres" id="2_r1wo1"]
+[ext_resource type="Texture2D" uid="uid://bg2uil1nviu7" path="res://Assets/Images/Icon/icon (4).jpg" id="3_4o17m"]
+[ext_resource type="Texture2D" uid="uid://dsaqw2ia8ynyu" path="res://Assets/Images/Icon/icon (3).jpg" id="4_15tew"]
+[ext_resource type="Texture2D" uid="uid://dakow4iscqjnb" path="res://Assets/Images/Icon/icon (2).jpg" id="5_nmhsn"]
+[ext_resource type="Texture2D" uid="uid://cwokufnmt2cxb" path="res://Assets/Images/Icon/icon.jpg" id="6_okdk4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j76us"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mji7"]
+bg_color = Color(0, 0, 0, 0.419608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37vkp"]
+size = Vector2(13, 13)
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3iu8k")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -42.0
+offset_top = -48.0
+offset_right = 44.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j76us")
+
+[node name="Equipment" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mji7")
+follow_focus = true
+
+[node name="Grid" type="GridContainer" parent="PanelContainer/Equipment"]
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 6
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton5" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton6" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton7" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton8" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton9" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton10" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton11" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton12" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton13" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton14" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton15" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton16" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton17" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton18" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton19" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton20" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton21" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton22" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton23" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton24" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton25" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton26" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton27" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton28" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton29" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton30" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton31" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton32" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton33" type="TextureButton" parent="PanelContainer/Equipment/Grid"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture_normal = ExtResource("2_h68yi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -13.0
+offset_right = 45.0
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Equipment" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_r1wo1")
+texture_normal = ExtResource("2_bnogi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer/Equipment" groups=["touch_screen_button"]]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_37vkp")
+
+[node name="Item" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_r1wo1")
+texture_normal = ExtResource("3_4o17m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer/Item" groups=["touch_screen_button"]]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_37vkp")
+
+[node name="Marterial" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_r1wo1")
+texture_normal = ExtResource("4_15tew")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer/Marterial" groups=["touch_screen_button"]]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_37vkp")
+
+[node name="StorytItem" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_r1wo1")
+texture_normal = ExtResource("5_nmhsn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer/StorytItem" groups=["touch_screen_button"]]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_37vkp")
+
+[node name="Other" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_r1wo1")
+texture_normal = ExtResource("6_okdk4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer/Other" groups=["touch_screen_button"]]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_37vkp")

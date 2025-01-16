@@ -26,12 +26,11 @@ func _on_generate_equipmet_pressed() -> void:
 	equipment = equip_generate.generate_random_equipment("weapon", "Black", 20)
 	Globals.player.add_oject_to_inventory(equipment)
 
-
 func _on_equip_pressed() -> void:
 	var equipment = Equipments.new()
-	equipment.name = "Đồ long đao"
-	equipment.type = "boots"
-	equipment.stats = {"hp" : 10}
+	var equip_generate = EquipmentGenerator.new()
+	equipment = equip_generate.generate_random_equipment("weapon", "Black", 20)
+	Globals.player.add_oject_to_inventory(equipment)
 	Globals.player.add_oject_to_inventory(equipment)
 	Globals.player.equip_equipment(Globals.player.inventory.equipments[0])
 
