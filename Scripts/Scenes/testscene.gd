@@ -23,7 +23,8 @@ func _on_load_pressed() -> void:
 func _on_generate_equipmet_pressed() -> void:
 	var equipment = Equipments.new()
 	var equip_generate = EquipmentGenerator.new()
-	equipment = equip_generate.generate_random_equipment("weapon", "Black", 20)
+	equipment = equip_generate.generate_random_equipment("weapon", "Red", 20)
+	equipment.texture_path = "res://Assets/Images/Icon/icon (4).jpg"
 	Globals.player.add_oject_to_inventory(equipment)
 
 func _on_equip_pressed() -> void:

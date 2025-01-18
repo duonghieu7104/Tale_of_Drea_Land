@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://drqsdlt70770n"]
 
-[ext_resource type="PackedScene" uid="uid://ceeoj1vtejc3e" path="res://Scripts/UI/Avatar.tscn" id="1_2jh1j"]
-[ext_resource type="Script" path="res://Scripts/UI/Character_hud.gd" id="1_ooh08"]
-[ext_resource type="Texture2D" uid="uid://dpel73jlj4ixv" path="res://Assets/Images/Icon/empty-icon.png" id="3_i6o58"]
+[ext_resource type="Script" path="res://Scripts/UI/Character_hud.gd" id="1_pudqf"]
+[ext_resource type="PackedScene" uid="uid://ceeoj1vtejc3e" path="res://UI/Avatar.tscn" id="2_vgqjw"]
+[ext_resource type="Texture2D" uid="uid://dpel73jlj4ixv" path="res://Assets/Images/Icon/empty-icon.png" id="3_suasa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2lhp"]
 
@@ -41,7 +41,7 @@ anti_aliasing_size = 0.1
 [node name="CharacterHud" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_ooh08")
+script = ExtResource("1_pudqf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -50,7 +50,7 @@ offset_bottom = 44.0
 scale = Vector2(1.1, 1.1)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v2lhp")
 
-[node name="Avatar" parent="Panel" instance=ExtResource("1_2jh1j")]
+[node name="Avatar" parent="Panel" instance=ExtResource("2_vgqjw")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
@@ -128,30 +128,30 @@ theme_override_constants/separation = 1
 
 [node name="Slot1" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
 
 [node name="Slot2" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
 
 [node name="Slot3" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
 
 [node name="Slot4" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
 
 [node name="Slot5" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
 
 [node name="Slot6" type="TextureRect" parent="Panel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_i6o58")
+texture = ExtResource("3_suasa")
 expand_mode = 2
