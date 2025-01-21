@@ -16,3 +16,6 @@ func load_ui_object(obj):
 		pass
 	else:
 		print("Unkown this Obj")
+
+func click_in_slot():
+	pass

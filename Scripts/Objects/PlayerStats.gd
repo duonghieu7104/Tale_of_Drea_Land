@@ -2,7 +2,7 @@ extends Resource
 
 class_name PlayerStats
 
-@export var level: int = 1
+@export var level: int = 60
 @export var exp: int = 0
 @export var exp_to_next_level: int = 100
 
@@ -421,9 +421,6 @@ func level_up():
 func calculate_stats(_level: int):
 	# Initialize base stats first
 	init_base_stats_1st_by_class_player()
-	
-	# Apply nature effects
-	apply_nature_effects()
 	
 	# Get class enum value from string
 	var class_enum = CharacterClass[class_player.to_upper()]

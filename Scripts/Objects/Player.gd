@@ -6,24 +6,36 @@ class_name Player
 
 @export var stats = PlayerStats.new()
 
-@export var GP : int # Đơn vị tiền GP (Gold Point)
+@export var GP: int # Đơn vị tiền GP (Gold Point)
+
+@export var all_skill: Array = [Skill1.new(), Skill2.new(), Skill3.new(), Skill4.new(), Skill5.new(), Skill6.new(), Skill7.new()] # tat ca skill cua class
+@export var stats_skills = {
+	"skill_1": 1,
+	"skill_2": 0,
+	"skill_3": 0,
+	"skill_4": 0,
+	"skill_5": 0,
+	"skill_6": 0,
+	"skill_7": 0
+}
+@export var learned_skills: Array = [] # skill da hoc	
 
 func add_oject_to_inventory(object):
-	if object is Items :
+	if object is Items:
 		inventory.add_item(object)
-	elif object is Equipments :
+	elif object is Equipments:
 		inventory.add_equipmet(object)
-	elif object is Gems :
+	elif object is Gems:
 		inventory.add_material(object)
-	elif object is Story_items :
+	elif object is Story_items:
 		inventory.add_story_item(object)
-	else :
+	else:
 		inventory.add_other(object)
 
-func equip_equipment(equipment : Equipments):
+func equip_equipment(equipment: Equipments):
 	inventory.equip_equipment(equipment)
 
-func unequip_equipment(equipment : Equipments):
+func unequip_equipment(equipment: Equipments):
 	inventory.unequip_equipment(equipment)
 
 func add_equipment_stats_to_player():

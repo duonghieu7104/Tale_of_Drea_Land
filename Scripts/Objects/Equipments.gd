@@ -2,24 +2,27 @@ extends Resource
 
 class_name Equipments
 
-@export var name : String
-@export var type : String # helmet (giáp mũ) - ring (nhẫn) - necklace (vòng cổ) - weapon (vũ khí) - weapon (vũ khí) - armor1 (giáp thân) - armor2 (giáp) - gloves (găng tay) - boots (giày)
-@export var rank : String # Grey - Green - Blue - Orange - Red - Purple - Black
-@export var star : int
-@export var level_requirement : int
-@export var description : String
-@export var weight : int
-@export var base_stats : Dictionary
-@export var bonus_stats_1 : Dictionary
-@export var bonus_stats_2 : Dictionary
-@export var effects : Dictionary
+@export var name: String
+@export var type: String # helmet (giáp mũ) - ring (nhẫn) - necklace (vòng cổ) - weapon (vũ khí) - weapon (vũ khí) - armor1 (giáp thân) - armor2 (giáp) - gloves (găng tay) - boots (giày)
+@export var rank: String # Grey - Green - Blue - Orange - Red - Purple - Black
+@export var star: int
+@export var level_requirement: int
+@export var description: String
+@export var weight: int
+@export var base_stats: Dictionary
+@export var bonus_stats_1: Dictionary
+@export var bonus_stats_2: Dictionary
+@export var effects: Dictionary
 
-@export var texture_path : String
-@export var rank_texture_path : String
+@export var texture_path: String
+@export var rank_texture_path: String
 
-var effectable : Effectable = Effectable.new()
+var effectable: Effectable = Effectable.new()
 
 #const IncreaseHpEffect = preload("res://Scripts/Objects/Effects/IncreaseHpEffect.gd")
+
+func _init() -> void:
+	pass
 
 func apply_equipment_effects(target):
 	effectable.effects = self.stats
@@ -122,7 +125,7 @@ func add_stat(stats_dict: Dictionary, stat_name: String, base_value: float, leve
 
 func add_bonus_stats_1(equipment: Equipments, type: String, level_mult: float, rank_mult: float):
 	var num_bonus = 1 if rank_mult < 1.5 else 2
-	var bonus_multiplier = 0.4  # Bonus stats are 40% của base stats
+	var bonus_multiplier = 0.4 # Bonus stats are 40% của base stats
 	
 	match type:
 		"helmet":
@@ -210,7 +213,7 @@ func upgrade_equipment(equipment: Equipments, gems: Dictionary) -> Dictionary:
 		if power_ratio >= 3.0:
 			result = upgrade_star_5(equipment)
 		elif power_ratio >= 2.0:
-			result = upgrade_star_3(equipment) 
+			result = upgrade_star_3(equipment)
 		else:
 			result = upgrade_star_2(equipment)
 		   
@@ -218,16 +221,16 @@ func upgrade_equipment(equipment: Equipments, gems: Dictionary) -> Dictionary:
 
 func get_stat_multiplier(current_star: int, increase: int) -> float:
 	if current_star < 10:
-		return 1.0 + (increase * 0.1)  # Tăng 10% mỗi star dưới 10
+		return 1.0 + (increase * 0.1) # Tăng 10% mỗi star dưới 10
 	elif current_star < 20:
-		return 1.0 + (increase * 0.05)  # Tăng 5% mỗi star 10-20
+		return 1.0 + (increase * 0.05) # Tăng 5% mỗi star 10-20
 	else:
-		return 1.0 + (increase * 0.02)  # Tăng 2% mỗi star trên 20
+		return 1.0 + (increase * 0.02) # Tăng 2% mỗi star trên 20
 
 func modify_stats(stats: Dictionary, multiplier: float):
 	for stat in stats:
 		var new_value = int(stats[stat] * multiplier)
-		stats[stat] = max(1, new_value)  # Không cho phép stats = 0
+		stats[stat] = max(1, new_value) # Không cho phép stats = 0
 
 func downgrade_star_2(equipment: Equipments) -> Dictionary:
 	if equipment.star <= 0:
@@ -241,7 +244,7 @@ func downgrade_star_2(equipment: Equipments) -> Dictionary:
 		modify_stats(equipment.bonus_stats_2, multiplier)
 	
 	equipment.star = max(0, equipment.star - 2)
-	return {"success": false, "star_change": -2}
+	return {"success": false, "star_change": - 2}
 
 func downgrade_star_1(equipment: Equipments) -> Dictionary:
 	if equipment.star <= 0:
@@ -255,7 +258,7 @@ func downgrade_star_1(equipment: Equipments) -> Dictionary:
 		modify_stats(equipment.bonus_stats_2, multiplier)
 	
 	equipment.star = max(0, equipment.star - 1)
-	return {"success": false, "star_change": -1}
+	return {"success": false, "star_change": - 1}
 
 func upgrade_star_2(equipment: Equipments) -> Dictionary:
 	var multiplier = get_stat_multiplier(equipment.star, 2)
@@ -267,7 +270,7 @@ func upgrade_star_2(equipment: Equipments) -> Dictionary:
 	
 	if equipment.weight < WEIGHT_LIMIT[equipment.type]:
 		var weight_multiplier = 1.05 if equipment.star < 10 else 1.0
-		equipment.weight = min(WEIGHT_LIMIT[equipment.type], 
+		equipment.weight = min(WEIGHT_LIMIT[equipment.type],
 			int(equipment.weight * weight_multiplier))
 	
 	equipment.star += 2
@@ -283,7 +286,7 @@ func upgrade_star_3(equipment: Equipments) -> Dictionary:
 	
 	if equipment.weight < WEIGHT_LIMIT[equipment.type]:
 		var weight_multiplier = 1.08 if equipment.star < 10 else 1.0
-		equipment.weight = min(WEIGHT_LIMIT[equipment.type], 
+		equipment.weight = min(WEIGHT_LIMIT[equipment.type],
 			int(equipment.weight * weight_multiplier))
 	
 	equipment.star += 3
@@ -338,7 +341,7 @@ func calculate_upgrade_chance(equipment: Equipments, gem_rank: String) -> float:
 	var base_chances = {
 		"Grey": 0.9,
 		"Green": 0.8,
-		"Blue": 0.7, 
+		"Blue": 0.7,
 		"Orange": 0.6,
 		"Red": 0.5,
 		"Purple": 0.4,

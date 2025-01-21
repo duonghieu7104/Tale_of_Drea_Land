@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo0uk15g83ymq"]
+[gd_scene load_steps=14 format=3 uid="uid://bo0uk15g83ymq"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/Inventory.gd" id="1_3iu8k"]
 [ext_resource type="Texture2D" uid="uid://bersbas331jwt" path="res://Assets/Images/Icon/icon (5).jpg" id="2_bnogi"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dsaqw2ia8ynyu" path="res://Assets/Images/Icon/icon (3).jpg" id="4_15tew"]
 [ext_resource type="Texture2D" uid="uid://dakow4iscqjnb" path="res://Assets/Images/Icon/icon (2).jpg" id="5_nmhsn"]
 [ext_resource type="Texture2D" uid="uid://cwokufnmt2cxb" path="res://Assets/Images/Icon/icon.jpg" id="6_okdk4"]
+[ext_resource type="PackedScene" uid="uid://c6u3mh68w5uif" path="res://UI/Detail.tscn" id="10_s1o73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j76us"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -1113,3 +1114,14 @@ stretch_mode = 0
 [node name="OtherTouch" type="TouchScreenButton" parent="HBoxContainer/Other" groups=["touch_screen_button"]]
 position = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_37vkp")
+
+[node name="Detail" parent="." instance=ExtResource("10_s1o73")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.275
+anchor_right = 0.5
+anchor_bottom = 0.275
+offset_left = -37.0
+offset_top = -44.0
+offset_right = 35.0
+offset_bottom = 52.0

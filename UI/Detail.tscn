@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6u3mh68w5uif"]
+
+[ext_resource type="Texture2D" uid="uid://dakow4iscqjnb" path="res://Assets/Images/Icon/icon (2).jpg" id="1_h82xe"]
+[ext_resource type="Script" path="res://Scripts/UI/Detail.gd" id="1_mdxc0"]
+[ext_resource type="Texture2D" uid="uid://cqaqxhmao2gxe" path="res://Assets/Images/Frame_rank/frame-blue.png" id="2_luatj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rlyu"]
+font_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrl1g"]
+font_size = 5
+
+[node name="Detail" type="Control"]
+layout_mode = 3
+anchor_left = 0.089
+anchor_right = 0.889
+anchor_bottom = 0.55
+offset_left = -0.0100002
+offset_right = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdxc0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(10, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 5
+text = "Skull Gold"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 13)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_h82xe")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.25
+offset_right = 3.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_luatj")
+expand_mode = 2
+
+[node name="MainStat" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 3
+theme_override_font_sizes/italics_font_size = 3
+theme_override_font_sizes/mono_font_size = 3
+theme_override_font_sizes/normal_font_size = 3
+theme_override_font_sizes/bold_font_size = 3
+bbcode_enabled = true
+text = "[color=red][b]ATK: [/b][/color] 100
+Slow"
+scroll_active = false
+
+[node name="Lv" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Lv: 10"
+label_settings = SubResource("LabelSettings_1rlyu")
+
+[node name="Stats" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "CriDamge: 60%
+Health: 5%"
+label_settings = SubResource("LabelSettings_rrl1g")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Equip" type="TextureButton" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+
+[node name="Upgrade" type="TextureButton" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+
+[node name="Sell" type="TextureButton" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2

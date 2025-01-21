@@ -15,3 +15,11 @@ enum TargetType {
 var skill_name: String
 var target_type: TargetType
 var max_targets: int = 1  # Số lượng mục tiêu tối đa cho multiple targets
+var description: String
+var texture_path: String
+
+func active() -> void:
+	pass
+
+func passive() -> void:
+	pass
