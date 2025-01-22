@@ -10,13 +10,13 @@ class_name Player
 
 @export var all_skill: Array = [Skill1.new(), Skill2.new(), Skill3.new(), Skill4.new(), Skill5.new(), Skill6.new(), Skill7.new()] # tat ca skill cua class
 @export var stats_skills = {
-	"skill_1": 1,
+	"skill_0": 1,
+	"skill_1": 0,
 	"skill_2": 0,
 	"skill_3": 0,
 	"skill_4": 0,
 	"skill_5": 0,
-	"skill_6": 0,
-	"skill_7": 0
+	"skill_6": 0
 }
 @export var learned_skills: Array = [] # skill da hoc	
 
