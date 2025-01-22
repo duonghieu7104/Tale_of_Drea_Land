@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn0o1rc3k1sf5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o3x1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia8vt"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us42t"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.1
+
+[node name="Btn" type="Button"]
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.025
+anchor_right = 0.133
+anchor_bottom = 0.025
+offset_left = -11.97
+offset_top = -4.0
+offset_right = 12.03
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3o3x1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ia8vt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ia8vt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_us42t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ia8vt")
+text = "Sell"

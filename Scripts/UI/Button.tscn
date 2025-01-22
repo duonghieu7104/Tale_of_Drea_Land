@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds54l0r3d1340"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7ig2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhs6i"]
+bg_color = Color(8.66354e-07, 0.711623, 0.589724, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(1.39579e-05, 0.936592, 0.71762, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 1
+shadow_offset = Vector2(0.14, 0.655)
+anti_aliasing_size = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di0r8"]
+bg_color = Color(8.66354e-07, 0.711623, 0.589724, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1.39579e-05, 0.936592, 0.71762, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 1
+shadow_offset = Vector2(0.14, 0.655)
+anti_aliasing_size = 0.2
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(0, 5)
+anchors_preset = -1
+anchor_left = 0.267
+anchor_top = 0.081
+anchor_right = 0.267
+anchor_bottom = 0.081
+offset_left = -16.03
+offset_top = -4.96
+offset_right = 15.97
+offset_bottom = 7.04
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a7ig2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qhs6i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qhs6i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_di0r8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qhs6i")
+text = "Button"

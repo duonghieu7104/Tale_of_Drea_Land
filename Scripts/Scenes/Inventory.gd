@@ -6,18 +6,17 @@ extends Control
 @onready var storyitem_tab = %StoryItem
 @onready var other_tab = %Other
 
-@onready var equipment_tb = $HBoxContainer/Equipment
-@onready var item_tb = $HBoxContainer/Item
+@onready var equipment_tb = $VBoxContainer/HBoxContainer/Equipment
+@onready var item_tb = $VBoxContainer/HBoxContainer/Item
 @onready var material_tb = $HBoxContainer/Marterial
-@onready var storyitem_tb = $HBoxContainer/StorytItem
-@onready var other_tb = $HBoxContainer/Other
+@onready var storyitem_tb = $VBoxContainer/HBoxContainer/StorytItem
+@onready var other_tb = $VBoxContainer/HBoxContainer/Other
 
-@onready var equipments_ui = $PanelContainer/Equipment/Grid
+@onready var equipments_ui = $VBoxContainer/PanelContainer/Equipment/Grid
 
 var slot = preload("res://UI/InventorySlot.tscn")
 
 var saveload = SaveLoad.new()
-
 
 
 func _ready() -> void:
@@ -27,11 +26,11 @@ func _ready() -> void:
 	
 	update_ui_equipment()
 	
-	$PanelContainer/Equipment.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
-	$PanelContainer/Item.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
-	$PanelContainer/Material.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
-	$PanelContainer/StoryItem.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
-	$PanelContainer/Other.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
+	$VBoxContainer/PanelContainer/Equipment.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
+	$VBoxContainer/PanelContainer/Item.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
+	$VBoxContainer/PanelContainer/Material.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
+	$VBoxContainer/PanelContainer/StoryItem.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
+	$VBoxContainer/PanelContainer/Other.get_v_scroll_bar().modulate = Color(0, 0, 0, 0)
 
 func setup_connections():
 	var touch_areas = get_tree().get_nodes_in_group("touch_screen_button")
