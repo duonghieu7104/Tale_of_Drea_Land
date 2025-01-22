@@ -60,7 +60,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_j76us")
 
-[node name="Equipment" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="Equipment" type="ScrollContainer" parent="VBoxContainer/PanelContainer" groups=["tab"]]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0mji7")
@@ -75,7 +75,7 @@ columns = 6
 [node name="InventorySlot" parent="VBoxContainer/PanelContainer/Equipment/Grid" instance=ExtResource("2_ixqkh")]
 layout_mode = 2
 
-[node name="Item" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="Item" type="ScrollContainer" parent="VBoxContainer/PanelContainer" groups=["tab"]]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -319,7 +319,7 @@ texture_normal = ExtResource("2_h68yi")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Material" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="Material" type="ScrollContainer" parent="VBoxContainer/PanelContainer" groups=["tab"]]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -556,14 +556,7 @@ texture_normal = ExtResource("2_h68yi")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TextureButton33" type="TextureButton" parent="VBoxContainer/PanelContainer/Material/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="StoryItem" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="StoryItem" type="ScrollContainer" parent="VBoxContainer/PanelContainer" groups=["tab"]]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -772,42 +765,7 @@ texture_normal = ExtResource("2_h68yi")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TextureButton29" type="TextureButton" parent="VBoxContainer/PanelContainer/StoryItem/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton30" type="TextureButton" parent="VBoxContainer/PanelContainer/StoryItem/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton31" type="TextureButton" parent="VBoxContainer/PanelContainer/StoryItem/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton32" type="TextureButton" parent="VBoxContainer/PanelContainer/StoryItem/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton33" type="TextureButton" parent="VBoxContainer/PanelContainer/StoryItem/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Other" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="Other" type="ScrollContainer" parent="VBoxContainer/PanelContainer" groups=["tab"]]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -981,76 +939,6 @@ texture_normal = ExtResource("2_h68yi")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TextureButton24" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton25" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton26" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton27" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton28" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton29" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton30" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton31" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton32" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton33" type="TextureButton" parent="VBoxContainer/PanelContainer/Other/Grid"]
-custom_minimum_size = Vector2(13, 13)
-layout_mode = 2
-texture_normal = ExtResource("2_h68yi")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
@@ -1122,7 +1010,8 @@ stretch_mode = 0
 position = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_37vkp")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="bg_popup" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1132,6 +1021,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uqehm")
 
 [node name="popup" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.489
@@ -1143,6 +1033,14 @@ offset_top = -44.0
 offset_right = 35.99
 offset_bottom = 44.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8kx8l")
+
+[node name="bg" type="TextureRect" parent="popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="popup"]
 layout_mode = 1
@@ -1163,14 +1061,27 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="popup/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="popup/VBoxContainer/header"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="esc" type="Button" parent="popup/VBoxContainer/header"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+
+[node name="title" type="HBoxContainer" parent="popup/VBoxContainer"]
 custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="popup/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="popup/VBoxContainer/title"]
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
+texture = ExtResource("5_nmhsn")
+expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="popup/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="popup/VBoxContainer/title"]
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
 [node name="description" type="RichTextLabel" parent="popup/VBoxContainer"]

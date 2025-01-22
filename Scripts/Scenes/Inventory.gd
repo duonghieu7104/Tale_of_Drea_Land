@@ -40,6 +40,21 @@ func setup_connections():
 func on_touch_area_pressed(TouchArea):
 	print("touch area: " + str(TouchArea.name))
 
+	for tab in get_tree().get_nodes_in_group("tab"):
+		tab.visible = false
+
+	match TouchArea.name:
+		"EquipmentTouch":
+			equipment_tab.visible = true
+		"ItemTouch":
+			item_tab.visible = true
+		"MaterialTouch":
+			material_tab.visible = true
+		"StoryItemTouch":
+			storyitem_tab.visible = true
+		"OtherTouch":
+			other_tab.visible = true
+
 func update_ui_equipment():
 	if equipments_ui.get_child_count() > 0:
 		var children = equipments_ui.get_children()
@@ -50,4 +65,14 @@ func update_ui_equipment():
 	for equipment in equipments:
 		var instantiate = slot.instantiate()
 		instantiate.load_ui_object(equipment)
+		instantiate.connect("pressed", Callable(self, "slot_pressed").bind(equipment))
 		equipments_ui.add_child(instantiate)
+
+func slot_pressed(equipment):
+	print("slot: " + str(equipment.name))
+	show_info(equipment)
+
+func show_info(equipment):
+	$bg_popup.visible = true
+	$popup.visible = true
+	$popup/VBoxContainer/title/TextureRect.texture = load(equipment.texture_path)
