@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4icw7xi6dehh"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/Characters.gd" id="1_60fnu"]
+[ext_resource type="Texture2D" uid="uid://bfdnyrqafkqq6" path="res://Assets/Images/Avatar/avatar0.jpg" id="2_e735s"]
+[ext_resource type="Texture2D" uid="uid://ddxpng1sbtcvm" path="res://Assets/Images/Icon/pre.png" id="2_ty2pc"]
+[ext_resource type="Texture2D" uid="uid://cwiciu05prtms" path="res://Assets/Images/Icon/next.png" id="3_3cbc6"]
+[ext_resource type="PackedScene" uid="uid://dw8ejtv7ema2l" path="res://UI/EquippedUI.tscn" id="5_fnm2a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kb2vm"]
+bg_color = Color(0.427493, 0.427493, 0.427493, 0.52549)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n27lm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvkwk"]
+bg_color = Color(0.18, 0.18, 0.18, 0.733333)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx27p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jywq"]
+bg_color = Color(0.18, 0.18, 0.18, 0.8)
+
+[node name="Characters" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -80.0
+offset_right = 45.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60fnu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kb2vm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="space" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+alignment = 1
+
+[node name="pre" type="TextureButton" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+texture_normal = ExtResource("2_ty2pc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="space2" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="name" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 4
+text = "Name"
+
+[node name="space" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="next" type="TextureButton" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_3cbc6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="space2" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 145)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n27lm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Panel"]
+layout_mode = 2
+
+[node name="CenterContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="space" type="MarginContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="avatar" type="TextureRect" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("2_e735s")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bvkwk")
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cx27p")
+
+[node name="EquippedUI" parent="Panel/VBoxContainer/Panel/VBoxContainer/Panel" instance=ExtResource("5_fnm2a")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.077
+anchor_right = 0.5
+anchor_bottom = 0.077
+offset_left = -34.0
+offset_top = 39.99
+offset_right = 35.0
+offset_bottom = 63.99
+
+[node name="main" type="PanelContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 74.0
+offset_right = 86.0
+offset_bottom = 124.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jywq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Panel/VBoxContainer/Panel/main"]
+visible = false
+layout_mode = 2

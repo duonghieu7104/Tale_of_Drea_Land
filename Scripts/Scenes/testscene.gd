@@ -38,3 +38,8 @@ func _on_equip_pressed() -> void:
 
 func _on_add_stats_to_player_pressed() -> void:
 	Globals.player.add_equipment_stats_to_player()
+
+
+func _on_button_pressed() -> void:
+	var char1 = Okami.new()
+	Globals.player.all_characters.append(char1)

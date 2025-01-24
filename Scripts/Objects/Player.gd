@@ -20,6 +20,9 @@ class_name Player
 }
 @export var learned_skills: Array = [] # skill da hoc	
 
+@export var all_characters: Array = []
+@export var team : Array = []
+
 func add_oject_to_inventory(object):
 	if object is Items:
 		inventory.add_item(object)

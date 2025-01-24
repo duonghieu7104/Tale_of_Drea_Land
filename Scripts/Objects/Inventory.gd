@@ -24,6 +24,20 @@ func _init() -> void:
 	for i in range(equipped_items.size()):
 		equipped_items[i] = null
 
+func add_to_inventory(object):
+	if object is Items:
+		add_item(object)
+	elif object is Equipments:
+		add_equipmet(object)
+	elif object is Gems:
+		add_material(object)
+	elif object is Story_items:
+		add_story_item(object)
+	elif object is Others:
+		add_other(object)
+	else:
+		print("Unkown this Obj")
+
 func add_equipmet(equipment : Equipments):
 	self.equipments.append(equipment)
 
@@ -38,53 +52,3 @@ func add_story_item(story_team : Story_items):
 
 func add_other(other : Others):
 	self.others.append(other)
-
-func equip_equipment(equipment : Equipments):
-	if equipment.type == "weapon":
-		if equipped_items[3] == null:
-			equipped_items[3] = equipment
-			equipments.erase(equipment)
-			print("Equipped in slot 3: ", equipment)
-		elif equipped_items[4] == null:
-			equipped_items[4] = equipment
-			equipments.erase(equipment)
-			print("Equipped in slot 4: ", equipment)
-		else:
-			print("Both weapon slots are full. Please unequip one of the weapons to continue.")
-	else:
-		var index = get_equipment_idex_on_type(equipment)
-		if index != -1:
-			if equipped_items[index] != null:
-				#Chuyển trang bị đang trang bị vào hành trang
-				add_equipmet(equipped_items[index])
-			#Gắn trang bị mới
-			equipped_items[index] = equipment
-			#và xóa trang bị mới đó ra khỏi hành trang
-			equipments.erase(equipment)
-			print("Equipped: ", equipment, " in slot index: ", index)
-		else:
-			print("Invalid equipment type")
-
-func unequip_equipment(equipment : Equipments):
-	pass
-
-func get_equipment_idex_on_type(equipment) -> int:
-	match equipment.type:
-		"helmet":
-			return 0
-		"ring":
-			return 1
-		"necklace":
-			return 2
-		"weapon":
-			return -1 # Xử lí riêng (vì cần logic khi trang bị vũ khí ở 2 tay)
-		"armor1":
-			return 5
-		"armor2":
-			return 6
-		"gloves":
-			return 7
-		"boots":
-			return 8
-		_:
-			return -1

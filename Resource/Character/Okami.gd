@@ -1,13 +1,13 @@
 extends CharacterBase
 
-class_name Alice
+class_name Okami
 
 
 func _init():
 
-	name_character = "res://Assets/Images/Avatar/avatar0.jpg"
-
-	# Customize base stats for Alice
+	name_character = "Okami"
+	texture_path = "res://Assets/Images/Avatar/Okami.png"
+	# Customize base stats for Okami
 	stats.base_stats = {
 		"hp": 60,     # Higher base HP
 		"mana": 55,   # More mana
