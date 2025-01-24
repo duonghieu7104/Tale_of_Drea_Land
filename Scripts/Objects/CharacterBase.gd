@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 
 # CharacterBase.gd
 class_name CharacterBase

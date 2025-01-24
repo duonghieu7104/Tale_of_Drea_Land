@@ -103,6 +103,7 @@ layout_mode = 2
 
 [node name="CenterContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="space" type="MarginContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(0, 2)
@@ -114,8 +115,11 @@ layout_mode = 2
 texture = ExtResource("2_e735s")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="name" type="RichTextLabel" parent="Panel/VBoxContainer/Panel/VBoxContainer/CenterContainer/CenterContainer"]
+custom_minimum_size = Vector2(50, 5)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_bvkwk")
 
@@ -130,19 +134,27 @@ anchor_left = 0.5
 anchor_top = 0.077
 anchor_right = 0.5
 anchor_bottom = 0.077
-offset_left = -34.0
-offset_top = 39.99
-offset_right = 35.0
-offset_bottom = 63.99
+offset_left = -39.0
+offset_top = 34.99
+offset_right = 30.0
+offset_bottom = 58.99
+scale = Vector2(1.17, 1.17)
 
 [node name="main" type="PanelContainer" parent="Panel/VBoxContainer/Panel/VBoxContainer/Panel"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.754
+anchor_right = 0.978
+anchor_bottom = 0.754
 offset_left = 6.0
-offset_top = 74.0
-offset_right = 86.0
-offset_bottom = 124.0
+offset_top = -24.02
+offset_right = -2.02
+offset_bottom = 25.98
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jywq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Panel/VBoxContainer/Panel/main"]
 visible = false
 layout_mode = 2
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/pre" to="." method="_on_pre_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/next" to="." method="_on_next_pressed"]

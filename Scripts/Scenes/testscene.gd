@@ -43,3 +43,11 @@ func _on_add_stats_to_player_pressed() -> void:
 func _on_button_pressed() -> void:
 	var char1 = Okami.new()
 	Globals.player.all_characters.append(char1)
+
+
+func _on_button_2_pressed() -> void:
+	var equipment = Equipments.new()
+	var equip_generate = EquipmentGenerator.new()
+	equipment = equip_generate.generate_random_equipment("weapon", "Red", 20)
+	equipment.texture_path = "res://Assets/Images/Icon/icon (4).jpg"
+	Globals.player.all_characters[0].char_base.equipped.insert(1, equipment)

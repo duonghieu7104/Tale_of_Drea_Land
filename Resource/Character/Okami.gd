@@ -1,14 +1,15 @@
-extends CharacterBase
+extends Resource
 
 class_name Okami
 
+@export var char_base : CharacterBase = CharacterBase.new()
 
 func _init():
 
-	name_character = "Okami"
-	texture_path = "res://Assets/Images/Avatar/Okami.png"
+	char_base.name_character = "Okami"
+	char_base.texture_path = "res://Assets/Images/Avatar/Okami.png"
 	# Customize base stats for Okami
-	stats.base_stats = {
+	char_base.stats.base_stats = {
 		"hp": 60,     # Higher base HP
 		"mana": 55,   # More mana
 		"atk_phys": 35,
@@ -19,7 +20,7 @@ func _init():
 	}
 
 	# Customize growth patterns for each stat
-	stats.growth_patterns = {
+	char_base.stats.growth_patterns = {
 		"hp": {
 				"1-30": {"type": "linear", "rate": 1.2},
 				"31-60": {"type": "linear", "rate": 1.0},
@@ -57,4 +58,4 @@ func _init():
 			}
 	}
 
-	skills = [Skill1.new(), Skill2.new(), Skill3.new()]
+	char_base.skills = [Skill1.new(), Skill2.new(), Skill3.new()]

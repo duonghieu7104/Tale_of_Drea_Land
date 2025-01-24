@@ -14,7 +14,9 @@ extends Control
 
 @onready var equipments_ui = $VBoxContainer/PanelContainer/Equipment/Grid
 
+
 var slot = preload("res://UI/InventorySlot.tscn")
+var character_ui = preload("res://UI/CharacterHUDmini.tscn")
 
 var saveload = SaveLoad.new()
 
@@ -76,3 +78,18 @@ func show_info(equipment):
 	$bg_popup.visible = true
 	$popup.visible = true
 	$popup/VBoxContainer/title/TextureRect.texture = load(equipment.texture_path)
+
+func show_list_char():
+	$list_char.visible = true
+	var characters = Globals.player.all_characters
+	for character in characters:
+		var instantiate = character_ui.instantiate()
+		var char_selected = instantiate.get_node("Touch")
+		char_selected.connect("pressed", Callable(self, "on_equip").bind(character))
+		$list_char/ScrollContainer/GridContainer.add_child(instantiate)
+
+func on_equip(character):
+	print("clicked")
+
+func _on_equip_pressed() -> void:
+	show_list_char()

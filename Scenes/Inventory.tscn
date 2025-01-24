@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo0uk15g83ymq"]
+[gd_scene load_steps=16 format=3 uid="uid://bo0uk15g83ymq"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/Inventory.gd" id="1_3iu8k"]
 [ext_resource type="Texture2D" uid="uid://bersbas331jwt" path="res://Assets/Images/Icon/icon (5).jpg" id="2_bnogi"]
@@ -23,6 +23,9 @@ size = Vector2(13, 13)
 bg_color = Color(0, 0, 0, 0.815686)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kx8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi4wy"]
+bg_color = Color(0.19, 0.19, 0.19, 0.772549)
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -1052,7 +1055,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="header" type="HBoxContainer" parent="popup/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="popup/VBoxContainer/header"]
@@ -1060,7 +1063,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="esc" type="Button" parent="popup/VBoxContainer/header"]
-custom_minimum_size = Vector2(13, 13)
+custom_minimum_size = Vector2(5, 5)
 layout_mode = 2
 
 [node name="title" type="HBoxContainer" parent="popup/VBoxContainer"]
@@ -1079,9 +1082,43 @@ custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
 [node name="description" type="RichTextLabel" parent="popup/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 bbcode_enabled = true
 
 [node name="btn_container" type="HBoxContainer" parent="popup/VBoxContainer"]
 layout_mode = 2
+
+[node name="huy" type="Button" parent="popup/VBoxContainer/btn_container"]
+layout_mode = 2
+
+[node name="equip" type="Button" parent="popup/VBoxContainer/btn_container"]
+layout_mode = 2
+
+[node name="sell" type="Button" parent="popup/VBoxContainer/btn_container"]
+layout_mode = 2
+
+[node name="upgrade" type="Button" parent="popup/VBoxContainer/btn_container"]
+layout_mode = 2
+
+[node name="list_char" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gi4wy")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="list_char"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="list_char/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="popup/VBoxContainer/btn_container/equip" to="." method="_on_equip_pressed"]

@@ -2,8 +2,8 @@ extends Node
 
 class_name CharacterManager
 
-func add_char(_Character : CharacterBase):
-	Globals.player.all_characters.append(_Character)
+func add_char(_character):
+	Globals.player.all_characters.append(_character)
 
 func get_char_by_name(_name : String) -> CharacterBase:
 	for character in Globals.player.all_characters:
@@ -11,17 +11,17 @@ func get_char_by_name(_name : String) -> CharacterBase:
 			return character
 	return null
 
-func gain_exp(_char : CharacterBase, amount : int):
+func gain_exp(_char, amount : int):
 	_char.gain_exp(amount)
 
 func show_stat_progression(stat_name: String, start_level: int = 1, end_level: int = 10):
 	Globals.player.show_stat_progression(stat_name, start_level, end_level)
 
-func calculate_stats(_char : CharacterBase, level: int) -> Dictionary:
+func calculate_stats(_char, level: int) -> Dictionary:
 	return _char.calculate_stats(level)
 
-func get_current_stats(_char : CharacterBase, level: int) -> Dictionary:
+func get_current_stats(_char, level: int) -> Dictionary:
 	return _char.get_current_stats(level)
 
-func get_skill(_char : CharacterBase) -> Array:
+func get_skill(_char) -> Array:
 	return _char.skills
